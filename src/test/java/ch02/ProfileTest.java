@@ -21,28 +21,22 @@ public class ProfileTest {
 
     @Test
     public void matchAnswersFalseWhenMustMatchCriteriaNotMet() {
-        // given
         profile.add(new Answer(question, Bool.FALSE));
         criteria.add(
                 new Criterion(new Answer(question, Bool.TRUE), Weight.MustMatch));
-        // when
         boolean matches = profile.matches(criteria);
 
-        // then
         assertFalse(matches);
     }
 
     @Test
     public void matchAnswersTrueForAnyDontCareCriteria() {
-        // given
         profile.add(new Answer(question, Bool.FALSE));
         criteria.add(
                 new Criterion(new Answer(question, Bool.TRUE), Weight.DontCare));
 
-        // when
         boolean matches = profile.matches(criteria);
 
-        // then
         assertTrue(matches);
     }
 }
